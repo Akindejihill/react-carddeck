@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NewDeckButton from './NewDeckButton';
 import NewCardButton from './NewCardButton';
@@ -56,6 +56,9 @@ function App() {
         });
     }
 
+    //get initial deck
+    useEffect(getNewDeck, []);
+
 
     return (
         <div className="App">
@@ -65,10 +68,10 @@ function App() {
             <div id="content">
                 <div id="card-ui">
                     <ol>
-                        <li>Press "Shuffle!" to shuffle the deck</li>
                         <li>Press "New Card!" button to deal a card</li>
+                        <li>Press "Shuffle!" to re-shuffle the deck</li>
                     </ol>
-                    <NewDeckButton getNewDeck={getNewDeck} />  <NewCardButton getNewCard={getNewCard} disabled={disabled}/>
+                    <NewCardButton getNewCard={getNewCard} disabled={disabled}/>   <NewDeckButton getNewDeck={getNewDeck} />
                 </div>
                 <div id="card-hand">
                     <CardHand key={deck.id} deck={deck} hand={hand}/>
