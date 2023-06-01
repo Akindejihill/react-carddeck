@@ -1,0 +1,10 @@
+#hand{
+    display:block;
+    position: relative;
+    top:80px;
+    left: 80px;
+}
+.card{
+    display:block;
+    position: absolute;
+}
